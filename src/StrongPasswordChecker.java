@@ -4,13 +4,11 @@ public class StrongPasswordChecker {
         boolean upperCaseFlag = false;
         boolean lowerCaseFlag = false;
         boolean digitFlag = false;
-        boolean strongPass = true;
 
         Validators validators = new Validators();
 
         if (!validators.isValidLength(s)) {
             int difference = 0;
-            strongPass = false;
             if (s.length() < 6) {
                 difference = 6 - s.length();
                 System.out.println("You need to add more " + difference + " characters");
@@ -20,7 +18,6 @@ public class StrongPasswordChecker {
             }
         }
         if (!validators.validCharacters(s)) {
-            strongPass = false;
             for (int i = 0; i < s.length(); i++) {
                 char chars = s.charAt(i);
                 if (Character.isDigit(chars)) {
@@ -42,7 +39,6 @@ public class StrongPasswordChecker {
             }
         }
         if (!validators.repeatedCharacters(s)) {
-            strongPass = false;
             int count = 0;
             char[] chars = s.toCharArray();
             for (int i = 0; i < chars.length - 1; i++) {
